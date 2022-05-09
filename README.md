@@ -84,7 +84,7 @@ Here is the detailed explaination of how this project is operating.
 
    This application will tell us if the given Golang version tag is released yet or not. By default, it will pick up `1.7` but you can change it in values.yaml file [here](https://github.com/ankur512512/myzenteam/blob/master/helm/values.yaml#L19), before deploying the helm chart.
 
-2. Docker build and push is handled via `github-actions` in the repo itself. To see a demo, check this [link](https://github.com/ankur512512/myzenteam/runs/6352383615?check_suite_focus=true). This will build and push the docker image to my personal [repo](https://hub.docker.com/layers/myzenteam/ankur512512/myzenteam/1.0/images/sha256-f5542c608161832ad0722e277c748f34d8d56f2f8c1735276ada863e38f0addd?context=explore) hosted on `Dockerhub` which is available publicly for k8s to use.
+2. Docker build and push is handled via `github-actions` in the repo itself. To see a demo, check this [link](https://github.com/ankur512512/myzenteam/runs/6355134277?check_suite_focus=true). This will build and push the docker image to my personal [repo](https://hub.docker.com/r/ankur512512/myzenteam/tags) hosted on `Dockerhub` which is available publicly for k8s to use.
 
 3. We have used [cert-manager](https://www.jetstack.io/blog/cert-manager-cncf/) from `jetstack` for TLS Offloading purpose.
 
