@@ -16,8 +16,8 @@ kubectl -n ingress-nginx apply -f https://raw.githubusercontent.com/kubernetes/i
 while [[ $(kubectl get pods -n ingress-nginx -l app.kubernetes.io/component=controller -o 'jsonpath={..status.conditions[?(@.type=="Ready")].status}') != "True" ]]; do echo -e "\nwaiting for nginx controller pod to get ready..." && sleep 4; done
 
 ## Port-forwarding the ingress service as we are using k8s on local server
-nohup kubectl -n ingress-nginx --address 0.0.0.0 port-forward svc/ingress-nginx-controller 80 &
-nohup kubectl -n ingress-nginx --address 0.0.0.0 port-forward svc/ingress-nginx-controller 443 &
+kubectl -n ingress-nginx --address 0.0.0.0 port-forward svc/ingress-nginx-controller 80 > /dev/null 2>&1 &
+kubectl -n ingress-nginx --address 0.0.0.0 port-forward svc/ingress-nginx-controller 443 > /dev/null 2>&1 &
 
 ## Installing our main Application Helm chart
 echo -e "\nNow installing our main helm chart running the golang application...\n"
