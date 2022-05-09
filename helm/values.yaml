@@ -1,0 +1,66 @@
+# Default values for gowebapp.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+## Deployment related values
+replicaCount: 1
+image:
+  repository: ankur512512/myzenteam
+  pullPolicy: Always
+  tag: "1.0"
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""  # If not set and create is true, a name is generated using the fullname template
+envVars:
+  TAG: 1.7
+podAnnotations: {}
+podSecurityContext: {}
+securityContext: {}
+resources:
+  limits:
+    cpu: 200m
+    memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+##HPA related values
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+
+## Service related Values
+service:
+  type: ClusterIP
+  port: 8080
+
+## Ingress related values
+
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: letsencrypt-cluster-issuer
+  hosts:
+    - host: nohostnamegiven
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls:
+  - hosts:
+    - nohostnamegiven
+    secretName: gowebapp-tls
+
+
