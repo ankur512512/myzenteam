@@ -65,6 +65,8 @@ It will take some time and once all the pods in `kube-system` namespace are read
 
    ![image](https://user-images.githubusercontent.com/12583640/167422481-b5b48e7b-2e40-47d9-8015-8291af8793e6.png)
 
+   ***Troubleshoot:*** Just in case, you don't see the certificate, please check if port-forward is working properly for both ports 80 and 443.
+
 5. Once you're done with the testing, you can tear-down/destroy the Infrastructure that you created using below command:
    
    ```bash
